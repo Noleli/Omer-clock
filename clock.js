@@ -114,14 +114,6 @@ class Clock {
     tick() {
         this.hands.forEach(h => h.tick());
     }
-    
-    start() {
-        this.hands.forEach(h => h.start());
-    }
-    
-    stop() {
-        this.hands.forEach(h => h.stop());
-    }
 
     size() {
         this.container.style.setProperty("width", null);
@@ -148,7 +140,6 @@ class Hand {
     constructor(name) {
         this.name = name;
         this.params = {};
-        this.updateInterval = 1000;
         this.gears = () => {};
         this.container = document.createElement("div");
         this.container.classList.add("hand");
@@ -165,15 +156,5 @@ class Hand {
 
     tick() {
         this.angle = this.gears();
-    }
-    
-    start() {
-        this.interval = setInterval(() => {
-            this.tick();
-        }, this.updateInterval);
-    }
-    
-    stop() {
-        clearInterval(this.interval);
     }
 }
