@@ -18,7 +18,17 @@ class Clock {
         
         this.hands = [];
 
+        this.props.sizeFrom = "min";
         this.size();
+    }
+
+    get sizeFrom() {
+        return this.props.sizeFrom;
+    }
+    set sizeFrom(sf) {
+        this.props.sizeFrom = sf;
+        this.size();
+        this.layoutTicks();
     }
 
     get numTicks() {
@@ -123,7 +133,16 @@ class Clock {
         let padding = parseFloat(window.getComputedStyle(this.face)["padding-left"]);
         let width = parseFloat(window.getComputedStyle(this.container).width);
         let height = parseFloat(window.getComputedStyle(this.container).height);
-        let diameter = Math.min(width, height) - 2 * padding - 2;
+        let diameter;
+        if(this.sizeFrom == "min") {
+            diameter = Math.min(width, height) - 2 * padding - 2;
+        }
+        else if(this.sizeFrom == "width") {
+            diameter = width - 2 * padding - 2;
+        }
+        else if(this.sizeFrom == "height") {
+            diameter = height - 2 * padding - 2;
+        }
         this.container.style.setProperty("width", diameter + "px");
         this.container.style.setProperty("height", diameter + "px");
         this.container.style.setProperty("--outer-diameter", diameter + "px");

@@ -2,15 +2,79 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Omer clock</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="clock.css">
+        
+        <meta property="og:url"                content="https://projects.noahliebman.net/omer-clock/" />
+        <meta property="og:title"              content="Omer clock" />
+        <meta property="og:description"        content="An oddly familiar yet not that useful way of visualizing the omer" />
+        <meta property="og:image"              content="https://projects.noahliebman.net/omer-clock/screenshot.png" />
+
+        <link rel="stylesheet" href="https://assets.noahliebman.net/bootstrap4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="clock.css">
         <script src="clock.js"></script>
     </head>
     <body>
-        <div id="container">
-            <div id="clock" class="clock"></div>
+        <div class="container hiddenUntilLoaded invisible">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="responsive-center">Omer clock</h1>
+                </div>
+                <div class="col-md-8">
+                    <h2 class="responsive-center textCount">Today is <span id="totalDays"></span><br>
+                        <span id="weeks"></span> and <span id="days"></span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row justify-content-center my-4">
+                <div class="col-lg-8">
+                    <div id="container">
+                        <div id="clock" class="clock"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="card-title">About</h1>
+                            <p class="card-text">Just for fun: an oddly familiar yet not that useful way of visualizing the <a href="https://en.wikipedia.org/wiki/Counting_of_the_Omer">omer</a>.</p>
+
+                            <p class="card-text">The small (“hour”) hand is the week hand (which is not intended to be the homophonic opposite of a <a href="https://en.wikipedia.org/wiki/With_a_strong_hand_and_an_outstretched_arm" dir="rtl">יד חזקה</a>). Like the hour hand of a regular clock, the most recently passed large number is the current week. It also points to the small tick representing the current day in the overall count.</p>
+
+                            <p class="card-text">The longer (“minute”) hand is the day-of-week hand. The most recently passed large number is the day of the current week.</p>
+
+                            <p>Yes, I know you really only need one hand, but I thought this looked cooler.</p>
+
+                            <hr>
+
+                            <p class="card-text">I’m <a href="https://noahliebman.net/">Noah Liebman</a>. I also made <a href="https://isyontefearlythisyear.com/">Is yontef early this year dot com</a> and <a href="https://quantifiedcantillation.nl/">Quantified Cantillation</a>. Get in touch if that’s your thing. <a href="mailto:noah@noahliebman.net">Email</a> or <a href="https://twitter.com/Noleli">Twitter</a> are solid choices.</p>
+
+                            <p class="card-text">This is on <a href="https://github.com/Noleli/isyontefearlythisyear">Github</a>.</p>
+                            <p class="card-text">CC BY-NC-SA</p>
+                        </div>
+                    </div>
+                </div><!-- /col -->
+            </div><!-- /row -->
         </div>
         <script src="omerClock.js"></script>
+
+        <!-- Matomo -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            _paq.push(['enableHeartBeatTimer']);
+            (function() {
+                var u="//assets.noahliebman.net/piwik/";
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', '5']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Matomo Code -->
     </body>
 </html>

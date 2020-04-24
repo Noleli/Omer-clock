@@ -46,6 +46,7 @@ omerCalc.fractional = true;
 let date = null;
 
 const clock = new Clock(document.querySelector("#clock"));
+clock.sizeFrom = "width";
 clock.numTicks = 49;
 clock.majorTickEvery = 7;
 
@@ -69,14 +70,35 @@ window.addEventListener("resize", () => {
     clock.layoutTicks();
 });
 
+function run() {
+    date = new Date(Date.now());
+    clock.tick();
+    setTextLabels();
+}
+
 let runningInterval;
 function start() {
+    run();
+    document.querySelectorAll(".hiddenUntilLoaded").forEach(n => n.classList.remove("invisible"));
     runningInterval = setInterval(() => {
-        date = new Date(Date.now());
-        clock.tick();
+        run();
     }, 1000);
 }
 
 function stop() {
     clearInterval(runningInterval);
 }
+
+const flooredCalc = new OmerCalculator(erevPesachDate);
+
+function setTextLabels() {
+    let totalDays = flooredCalc.totalDays(date);
+    let weeks = flooredCalc.weeks(date);
+    let days = flooredCalc.days(date);
+
+    document.querySelector("#totalDays").innerText = `${totalDays} day${totalDays == 1 ? '' : 's'}`;
+    document.querySelector("#weeks").innerText = `${weeks} week${weeks == 1 ? '' : 's'}`;
+    document.querySelector("#days").innerText = `${days} day${days == 1 ? '' : 's'}`;
+}
+
+start();

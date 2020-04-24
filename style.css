@@ -2,18 +2,19 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
+.textCount {
+    text-align: right;
 }
 
-#container {
-    width: 100vw;
-    height: 100vh;
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 768px) {
+    .responsive-center {
+        text-align: center;
+    }
+}
+
+.container {
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 #clock .hand.weeks {
