@@ -1,0 +1,96 @@
+.clock, .clock *, .clock *::before, .clock *::after {
+  box-sizing: border-box;
+}
+
+.clock {
+    border: calc(0.05 * var(--outer-diameter)) solid #000000;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.clock .face {
+   background-color: #ffffff;
+   width: 100%;
+   height: 100%;
+   padding: 0px;
+   border-radius: 50%;
+   position: relative;
+}
+
+.clock .face .centeredContainer {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+}
+
+.clock .face .centeredContainer .tickContainer {
+    position: absolute;
+    transform-origin: top;
+}
+
+.clock .face .centeredContainer .tick {
+   width: 1px;
+   height: calc(0.05 * var(--diameter));
+   background-color: #999999;
+}
+
+.clock .face .centeredContainer .tick.majorTick {
+    width: calc(0.01 * var(--diameter));
+    background-color: #777777;
+}
+
+.clock .face .centeredContainer .number {
+    position: absolute;
+    font-family: "Helvetica", sans-serif;
+    font-size: calc(0.08 * var(--diameter));
+    --margin-ratio: 0.105;
+}
+
+.clock .face .centeredContainer .minorNumber {
+    position: absolute;
+    font-family: "Helvetica", sans-serif;
+    color: #999999;
+    font-size: calc(0.05 * var(--diameter));
+    --margin-ratio: 0.175;
+}
+
+.clock .face .centeredContainer .hand {
+    width: var(--width);
+    height: var(--height);
+    overflow: hidden;
+    position: absolute;
+    bottom: calc(0px - var(--fulcrum));
+    transform-origin: 50% calc(var(--height) - var(--fulcrum));
+    left: calc(0px - var(--width)/2);
+    border-top-left-radius: var(--width);
+    border-top-right-radius: var(--width);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    --taper-factor: calc(11 - var(--taper));
+    filter: drop-shadow(0px 0px calc(0.006 * var(--diameter)) rgba(0, 0, 0, .4));
+}
+
+.clock .hand::before, .hand::after {
+    display: block;
+    content: "";
+    width: 50%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.clock .hand::before {
+    border-top: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: calc(var(--height) * var(--taper-factor)) solid var(--color);
+    border-left: calc(var(--width)/2) solid transparent;
+    left: 0;
+}
+
+.clock .hand::after {
+    border-top: 0 solid blue;
+    border-right: calc(var(--width)/2) solid transparent;
+    border-bottom: calc(var(--height) * var(--taper-factor)) solid var(--color);
+    border-left: 0 solid green;
+    right: 0;
+}

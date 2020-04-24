@@ -1,0 +1,41 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock .hand.weeks {
+    --width: calc(0.045 * var(--diameter));
+    --height: calc(0.35 * var(--diameter));
+    --fulcrum: calc(0.05 * var(--diameter));
+    --taper: 7;
+    --color: #111111;
+}
+
+#clock .hand.days {
+    --width: calc(0.035 * var(--diameter));
+    --height: calc(0.525 * var(--diameter));
+    --fulcrum: calc(0.1 * var(--diameter));
+    --taper: 8;
+    --color: #111111;
+}
+
+#clock .hand.totalDays {
+    --width: calc(0.015 * var(--diameter));
+    --height: calc(0.6 * var(--diameter));
+    --fulcrum: calc(0.12 * var(--diameter));
+    --taper: 8;
+    --color: #cc0000;
+}
