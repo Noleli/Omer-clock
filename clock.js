@@ -1,7 +1,9 @@
+"use strict";
+
 class Clock {
     constructor(container) {
-        this.container = container; //.appendChild(document.createElement("div"));
-        // this.container.classList.add("clock");
+        this.container = container;
+
         this.props = {};
         this.props.majorTickEvery = 0;
         this.props.minorTickLabelEvery = 0;
@@ -13,7 +15,6 @@ class Clock {
         this.centeredContainer.classList.add("centeredContainer");
         
         this.ticksContainer = this.centeredContainer.appendChild(document.createElement("div"));
-
         
         this.hands = [];
 

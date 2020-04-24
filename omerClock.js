@@ -1,3 +1,5 @@
+"use strict";
+
 class OmerCalculator {
     constructor(erevPesachDate) {
         this.erevPesachDate = erevPesachDate;
@@ -43,21 +45,21 @@ omerCalc.fractional = true;
 
 let date = null;
 
-let clock = new Clock(document.querySelector("#clock"));
+const clock = new Clock(document.querySelector("#clock"));
 clock.numTicks = 49;
 clock.majorTickEvery = 7;
 
-let weeks = clock.makeHand("weeks");
+const weeks = clock.makeHand("weeks");
 weeks.gears = function() {
     return omerCalc.weeks(date) / 7 * 2*Math.PI;
 };
 
-let days = clock.makeHand("days");
+const days = clock.makeHand("days");
 days.gears = function() {
     return omerCalc.days(date) / 7 * 2*Math.PI;
 };
 
-// let totalDays = clock.makeHand("totalDays");
+// const totalDays = clock.makeHand("totalDays");
 // totalDays.gears = function() {
 //     return omerCalc.totalDays(date) / 49 * 2*Math.PI;
 // };
@@ -67,7 +69,14 @@ window.addEventListener("resize", () => {
     clock.layoutTicks();
 });
 
-setInterval(() => {
-    date = new Date(Date.now());
-    clock.tick();
-}, 1000);
+let runningInterval;
+function start() {
+    runningInterval = setInterval(() => {
+        date = new Date(Date.now());
+        clock.tick();
+    }, 1000);
+}
+
+function stop() {
+    clearInterval(runningInterval);
+}
