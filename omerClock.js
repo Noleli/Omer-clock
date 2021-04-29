@@ -39,7 +39,7 @@ class OmerCalculator {
     }
 }
 
-const erevPesachDate = new Date(2020, 3, 8, 21, 0);
+const erevPesachDate = new Date(2021, 2, 27, 21, 0);
 const omerCalc = new OmerCalculator(erevPesachDate);
 omerCalc.fractional = true;
 
